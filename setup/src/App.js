@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+// importing all the icons that are going to be used
 import {
   FaEnvelopeOpen,
   FaUser,
@@ -9,13 +10,16 @@ import {
 } from 'react-icons/fa'
 // external API
 const url = 'https://randomuser.me/api/'
-const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg'
+// default image that wiil be used in case there is no image url
+const defaultImage =
+  'https://cdn.pixabay.com/photo/2015/02/22/17/56/loading-645268_960_720.jpg'
+
 function App() {
   const [loading, setLoading] = useState(true)
   const [person, setPerson] = useState(null)
   const [title, setTitle] = useState('name')
   const [value, setValue] = useState('random person')
-
+  // fetching the data from API
   const getPerson = async () => {
     const response = await fetch(url)
     const data = await response.json()
@@ -43,6 +47,7 @@ function App() {
     }
     setPerson(newPerson)
     setLoading(false)
+    // allways show name on initial load
     setTitle('name')
     setValue(newPerson.name)
   }
@@ -114,6 +119,7 @@ function App() {
               <FaLock />
             </button>
           </div>
+          {/* every click will generate a new person */}
           <button className='btn' type='button' onClick={getPerson}>
             {loading ? 'loading...' : 'random user'}
           </button>
