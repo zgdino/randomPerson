@@ -20,12 +20,29 @@ function App() {
     const response = await fetch(url)
     const data = await response.json()
     const person = data.results[0]
+    // possible to write all in one line, but hard to read
     const { phone, email } = person
+    // renaming the value name from large to image
     const { large: image } = person.picture
     // a different way on how to get nested values
     const {
       login: { password },
     } = person
+    const { first, last } = person.name
+    const { age } = person.dob
+    const { number, name } = person.location.street
+
+    const newPerson = {
+      image,
+      phone,
+      email,
+      password,
+      age,
+      street:`${number} ${name}`,
+      name:`${first} ${last}`
+    }
+    setPerson(newPerson)
+    setLoading(false)
   }
   // on initial load
   useEffect(() => {
