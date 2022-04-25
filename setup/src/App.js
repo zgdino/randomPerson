@@ -7,6 +7,7 @@ import {
   FaPhone,
   FaLock,
 } from 'react-icons/fa'
+// external API
 const url = 'https://randomuser.me/api/'
 const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg'
 function App() {
@@ -14,6 +15,15 @@ function App() {
   const [person, setPerson] = useState(null)
   const [title, setTitle] = useState('name')
   const [value, setValue] = useState('radnom person')
+
+  const getPerson = async () => {
+    const response = await fetch(url)
+    const data = await response.json()
+  }
+
+  useEffect(() => {
+    getPerson()
+  }, [])
 
   const handleValue = (e) => {
     console.log(e.target)
@@ -48,11 +58,7 @@ function App() {
             >
               <FaEnvelopeOpen />
             </button>
-            <button
-              className='icon'
-              data-label='age'
-              onMouseOver={handleValue}
-            >
+            <button className='icon' data-label='age' onMouseOver={handleValue}>
               <FaCalendarTimes />
             </button>
             <button
@@ -77,8 +83,8 @@ function App() {
               <FaLock />
             </button>
           </div>
-          <button className="btn" type='button'>
-            {loading? 'loading...' : 'random user'}
+          <button className='btn' type='button'>
+            {loading ? 'loading...' : 'random user'}
           </button>
         </div>
       </div>
