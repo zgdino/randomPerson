@@ -19,8 +19,15 @@ function App() {
   const getPerson = async () => {
     const response = await fetch(url)
     const data = await response.json()
+    const person = data.results[0]
+    const { phone, email } = person
+    const { large: image } = person.picture
+    // a different way on how to get nested values
+    const {
+      login: { password },
+    } = person
   }
-
+  // on initial load
   useEffect(() => {
     getPerson()
   }, [])
