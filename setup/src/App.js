@@ -14,7 +14,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [person, setPerson] = useState(null)
   const [title, setTitle] = useState('name')
-  const [value, setValue] = useState('radnom person')
+  const [value, setValue] = useState('random person')
 
   const getPerson = async () => {
     const response = await fetch(url)
@@ -38,8 +38,8 @@ function App() {
       email,
       password,
       age,
-      street:`${number} ${name}`,
-      name:`${first} ${last}`
+      street: `${number} ${name}`,
+      name: `${first} ${last}`,
     }
     setPerson(newPerson)
     setLoading(false)
@@ -52,7 +52,12 @@ function App() {
   }, [])
 
   const handleValue = (e) => {
-    console.log(e.target)
+    if (e.target.classList.contains('icon')) {
+      const newValue = e.target.dataset.label
+      setTitle(newValue)
+      setValue(person[newValue])
+      
+    }
   }
 
   return (
