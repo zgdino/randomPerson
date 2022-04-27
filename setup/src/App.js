@@ -15,6 +15,7 @@ const defaultImage =
   'https://cdn.pixabay.com/photo/2015/02/22/17/56/loading-645268_960_720.jpg'
 
 function App() {
+  // useState hooks
   const [loading, setLoading] = useState(true)
   const [person, setPerson] = useState(null)
   const [title, setTitle] = useState('name')
@@ -35,7 +36,7 @@ function App() {
     const { first, last } = person.name
     const { age } = person.dob
     const { number, name } = person.location.street
-
+    // destructuring newPerson
     const newPerson = {
       image,
       phone,
@@ -128,5 +129,5 @@ function App() {
     </main>
   )
 }
-
+// always export 
 export default App
