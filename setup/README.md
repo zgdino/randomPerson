@@ -5,4 +5,5 @@
 -API used in this project changes on every refresh
 -changed the original code to have a dark background
 -dark mode tutorial
+-css variables
 -
