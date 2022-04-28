@@ -21,9 +21,12 @@ function App() {
   const [title, setTitle] = useState('name')
   const [value, setValue] = useState('random person')
   // fetching the data from API
+  // using async function because fetching data can take some time
   const getPerson = async () => {
+    // when fetching data always use await
     const response = await fetch(url)
     const data = await response.json()
+    // asigning very first result to a new var person
     const person = data.results[0]
     // possible to write all in one line, but hard to read
     const { phone, email } = person
